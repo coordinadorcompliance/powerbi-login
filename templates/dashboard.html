@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial;
+            background:#f4f4f4;
+        }
+
+        .topbar{
+            background:#0078d4;
+            color:white;
+            padding:15px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .logout-btn{
+            background:white;
+            color:#0078d4;
+            padding:8px 15px;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            text-decoration:none;
+        }
+
+        iframe{
+            width:100%;
+            height:90vh;
+            border:none;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="topbar">
+        <h2>Dashboard Power BI</h2>
+
+        <a class="logout-btn" href="/logout">
+            Cerrar sesión
+        </a>
+    </div>
+
+    <iframe 
+        title="Power BI"
+        src="https://app.powerbi.com/view?r=eyJrIjoiOWUwZTBkMmUtMzRhYi00N2JlLTgzMmEtMzJkMjI1NmUzNTliIiwidCI6IjAwMTY5N2E4LWJmMzktNDVlMS1hMzAzLTNjMTBjNmE2YTQzOSIsImMiOjR9"
+        allowfullscreen>
+    </iframe>
+
+</body>
+</html>
