@@ -3,83 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COOPORIGEN - Portal BI</title>
+    <title>Portal BI - COOPORIGEN</title>
 
     <style>
 
-        body{
+        *{
             margin:0;
-            font-family:Arial, sans-serif;
-            background:#f4f4f4;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        .topbar{
-            background:#3D9588;
-            color:white;
-            height:75px;
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #3D9588, #0B1F3A);
             display:flex;
-            justify-content:space-between;
+            justify-content:center;
             align-items:center;
-            padding:0 30px;
-            box-shadow:0 2px 10px rgba(0,0,0,0.2);
+            height:100vh;
         }
 
-        .left-section{
-            display:flex;
-            align-items:center;
-            gap:15px;
-        }
-
-        .logo{
-            width:50px;
-            height:50px;
-            object-fit:contain;
+        .login-box{
             background:white;
-            padding:5px;
+            padding:45px;
+            border-radius:20px;
+            width:360px;
+            text-align:center;
+            box-shadow:0 12px 35px rgba(0,0,0,0.25);
+        }
+
+        h1{
+            color:#3D9588;
+            font-size:30px;
+            margin-bottom:8px;
+            letter-spacing:1px;
+        }
+
+        .subtitle{
+            color:#777;
+            margin-bottom:28px;
+            font-size:14px;
+        }
+
+        input{
+            width:100%;
+            padding:13px;
+            margin-top:14px;
+            border:1px solid #dcdcdc;
             border-radius:10px;
+            font-size:14px;
+            transition:0.3s;
         }
 
-        .titles{
-            display:flex;
-            flex-direction:column;
+        input:focus{
+            outline:none;
+            border:1px solid #3D9588;
+            box-shadow:0 0 8px rgba(61,149,136,0.4);
         }
 
-        .main-title{
-            font-size:24px;
-            font-weight:bold;
-        }
-
-        .sub-title{
-            font-size:13px;
-            opacity:0.9;
-        }
-
-        .logout-btn{
+        button{
+            width:100%;
+            padding:13px;
+            margin-top:24px;
             background:#D4AF37;
             color:white;
-            padding:10px 18px;
             border:none;
-            border-radius:8px;
+            border-radius:10px;
             cursor:pointer;
-            text-decoration:none;
+            font-size:16px;
             font-weight:bold;
             transition:0.3s;
         }
 
-        .logout-btn:hover{
+        button:hover{
             background:#b9962f;
-            transform:scale(1.03);
+            transform:translateY(-2px);
         }
 
-        .dashboard-container{
-            width:100%;
-            height:calc(100vh - 75px);
-        }
-
-        iframe{
-            width:100%;
-            height:100%;
-            border:none;
+        .footer{
+            margin-top:25px;
+            font-size:12px;
+            color:#999;
+            line-height:20px;
         }
 
     </style>
@@ -87,35 +91,38 @@
 </head>
 <body>
 
-    <div class="topbar">
+    <div class="login-box">
 
-        <div class="left-section">
+        <h1>COOPORIGEN</h1>
 
-            <img 
-                src="{{ url_for('static', filename='images/logo.png') }}" 
-                alt="COOPORIGEN"
-                class="logo">
-
-            <div class="titles">
-                <div class="main-title">COOPORIGEN</div>
-                <div class="sub-title">Portal Corporativo BI</div>
-            </div>
-
+        <div class="subtitle">
+            Portal Corporativo BI
         </div>
 
-        <a class="logout-btn" href="/logout">
-            Cerrar sesión
-        </a>
+        <form method="POST">
 
-    </div>
+            <input 
+                type="text" 
+                name="username" 
+                placeholder="Usuario" 
+                required>
 
-    <div class="dashboard-container">
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Contraseña" 
+                required>
 
-        <iframe 
-            title="Power BI"
-            src="https://app.powerbi.com/view?r=eyJrIjoiOWUwZTBkMmUtMzRhYi00N2JlLTgzMmEtMzJkMjI1NmUzNTliIiwidCI6IjAwMTY5N2E4LWJmMzktNDVlMS1hMzAzLTNjMTBjNmE2YTQzOSIsImMiOjR9"
-            allowfullscreen>
-        </iframe>
+            <button type="submit">
+                Ingresar
+            </button>
+
+        </form>
+
+        <div class="footer">
+            Inteligencia de Negocios • 2026<br>
+            © Todos los derechos reservados - COOPORIGEN
+        </div>
 
     </div>
 
