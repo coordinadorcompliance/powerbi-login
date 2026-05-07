@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal BI - CoopOrigen</title>
+    <title>Portal BI - COOPORIGEN</title>
 
     <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
         body{
             font-family: Arial, sans-serif;
@@ -14,59 +20,61 @@
             justify-content:center;
             align-items:center;
             height:100vh;
-            margin:0;
         }
 
         .login-box{
             background:white;
-            padding:40px;
-            border-radius:18px;
-            width:340px;
-            box-shadow:0 10px 30px rgba(0,0,0,0.25);
+            padding:45px;
+            border-radius:20px;
+            width:360px;
             text-align:center;
+            box-shadow:0 12px 35px rgba(0,0,0,0.25);
         }
 
         .logo{
-            width:120px;
-            margin-bottom:15px;
+            width:130px;
+            height:auto;
+            object-fit:contain;
+            margin-bottom:20px;
         }
 
         h1{
             color:#3D9588;
-            margin-bottom:5px;
-            font-size:28px;
+            font-size:30px;
+            margin-bottom:8px;
+            letter-spacing:1px;
         }
 
-        p{
+        .subtitle{
             color:#777;
-            margin-bottom:25px;
+            margin-bottom:28px;
             font-size:14px;
         }
 
         input{
             width:100%;
-            padding:12px;
-            margin-top:12px;
-            border:1px solid #ccc;
-            border-radius:8px;
+            padding:13px;
+            margin-top:14px;
+            border:1px solid #dcdcdc;
+            border-radius:10px;
             font-size:14px;
-            box-sizing:border-box;
+            transition:0.3s;
         }
 
         input:focus{
             outline:none;
             border:1px solid #3D9588;
-            box-shadow:0 0 5px rgba(61,149,136,0.5);
+            box-shadow:0 0 8px rgba(61,149,136,0.4);
         }
 
         button{
             width:100%;
-            padding:12px;
-            margin-top:22px;
+            padding:13px;
+            margin-top:24px;
             background:#D4AF37;
             color:white;
             border:none;
-            border-radius:8px;
+            border-radius:10px;
             cursor:pointer;
             font-size:16px;
             font-weight:bold;
@@ -75,11 +83,11 @@
 
         button:hover{
             background:#b9962f;
-            transform:scale(1.02);
+            transform:translateY(-2px);
         }
 
         .footer{
-            margin-top:20px;
+            margin-top:22px;
             font-size:12px;
             color:#999;
         }
@@ -91,25 +99,30 @@
 
     <div class="login-box">
 
-        <img src="{{ url_for('static', filename='images/logo.jpeg') }}" 
-     alt="Logo CoopOrigen"
-     class="logo">
+        <img 
+            src="{{ url_for('static', filename='images/logo.png') }}" 
+            alt="COOPORIGEN"
+            class="logo">
 
         <h1>COOPORIGEN</h1>
 
-        <p>Portal Corporativo BI</p>
+        <div class="subtitle">
+            Portal Corporativo BI
+        </div>
 
         <form method="POST">
 
-            <input type="text" 
-                   name="username" 
-                   placeholder="Usuario" 
-                   required>
+            <input 
+                type="text" 
+                name="username" 
+                placeholder="Usuario" 
+                required>
 
-            <input type="password" 
-                   name="password" 
-                   placeholder="Contraseña" 
-                   required>
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Contraseña" 
+                required>
 
             <button type="submit">
                 Ingresar
