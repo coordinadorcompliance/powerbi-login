@@ -31,13 +31,6 @@
             box-shadow:0 12px 35px rgba(0,0,0,0.25);
         }
 
-        .logo{
-            width:130px;
-            height:auto;
-            object-fit:contain;
-            margin-bottom:20px;
-        }
-
         h1{
             color:#3D9588;
             font-size:30px;
@@ -87,9 +80,10 @@
         }
 
         .footer{
-            margin-top:22px;
+            margin-top:25px;
             font-size:12px;
             color:#999;
+            line-height:20px;
         }
 
     </style>
@@ -98,11 +92,6 @@
 <body>
 
     <div class="login-box">
-
-        <img 
-            src="{{ url_for('static', filename='images/logo.png') }}" 
-            alt="COOPORIGEN"
-            class="logo">
 
         <h1>COOPORIGEN</h1>
 
@@ -131,7 +120,8 @@
         </form>
 
         <div class="footer">
-            Inteligencia de Negocios • 2026
+            Inteligencia de Negocios • 2026<br>
+            © Todos los derechos reservados - COOPORIGEN
         </div>
 
     </div>
