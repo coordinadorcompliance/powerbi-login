@@ -3,9 +3,18 @@ from flask import Flask, render_template, request, redirect, session
 app = Flask(__name__)
 app.secret_key = "clave_super_secreta"
 
-# Usuario y contraseña
-USER = "admin"
-PASSWORD = "1234"
+# Lista de usuarios
+users = {
+    "Douglas.alvarez": "Eslop.2026*",
+    "Andrea.roldan": "Eslop.2026*",
+    "Sergio.munera": "Eslop.2026*",
+    "Juan.londono": "Cooporigen.2026*",
+    "Sara.gonzales": "Cooporigen.2026*",
+    "Juan.garcia": "Cooporigen.2026*",
+    "Vanessa.espinal": "Eslop.2026*",
+    "Yeison.saldarriaga": "Cooporigen.2026*",
+    "Cindy.aristizabal": "Eslop.2026*"
+}
 
 @app.route("/", methods=["GET", "POST"])
 def login():
@@ -13,7 +22,7 @@ def login():
         user = request.form["username"]
         password = request.form["password"]
 
-        if user == USER and password == PASSWORD:
+        if user in users and users[user] == password:
             session["logged_in"] = True
             return redirect("/dashboard")
 
