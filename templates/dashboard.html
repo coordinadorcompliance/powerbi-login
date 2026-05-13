@@ -7,57 +7,151 @@
 
     <style>
 
-        body{
+        *{
             margin:0;
-            font-family:Arial, sans-serif;
-            background:#f4f4f4;
+            padding:0;
+            box-sizing:border-box;
         }
 
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            overflow:hidden;
+        }
+
+        /* ===== TOPBAR ===== */
+
         .topbar{
-            background:#3D9588;
+            background: linear-gradient(90deg, #3D9588, #245B63);
             color:white;
-            padding:15px 25px;
+            padding:16px 28px;
             display:flex;
             justify-content:space-between;
             align-items:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.20);
+            border-bottom:3px solid #D4AF37;
         }
 
-        .title{
+        .left-section{
             display:flex;
             align-items:center;
-            gap:12px;
+            gap:18px;
         }
 
-.title img{
-    width:45px;
-    height:45px;
-    border-radius:8px;
-    object-fit:contain;
-    background:white;
-    padding:3px;
-}
-        .title h2{
-            margin:0;
-            font-size:22px;
+        .logo{
+            width:58px;
+            height:58px;
+            border-radius:12px;
+            object-fit:contain;
+            background:white;
+            padding:4px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.20);
+        }
+
+        .title-box{
+            display:flex;
+            flex-direction:column;
+        }
+
+        .title-box h1{
+            font-size:32px;
+            font-weight:bold;
+            letter-spacing:1px;
+        }
+
+        .title-box span{
+            font-size:13px;
+            opacity:0.9;
+            margin-top:3px;
+        }
+
+        /* ===== RIGHT SECTION ===== */
+
+        .right-section{
+            display:flex;
+            align-items:center;
+            gap:18px;
+        }
+
+        .support-box{
+            background:rgba(255,255,255,0.12);
+            padding:12px 18px;
+            border-radius:12px;
+            backdrop-filter:blur(5px);
+            border:1px solid rgba(255,255,255,0.15);
+        }
+
+        .support-title{
+            font-size:13px;
+            font-weight:bold;
+            color:#FFD86B;
+            margin-bottom:5px;
+        }
+
+        .support-info{
+            font-size:12px;
+            line-height:18px;
         }
 
         .logout-btn{
             background:#D4AF37;
             color:white;
-            padding:10px 18px;
-            border-radius:8px;
+            padding:13px 22px;
+            border-radius:12px;
             text-decoration:none;
             font-weight:bold;
+            transition:0.3s;
+            box-shadow:0 4px 10px rgba(0,0,0,0.15);
         }
 
         .logout-btn:hover{
             background:#b9962f;
+            transform:translateY(-2px);
+        }
+
+        /* ===== CONTENT ===== */
+
+        .dashboard-container{
+            padding:10px;
+            background:#dfe5e8;
         }
 
         iframe{
             width:100%;
-            height:92vh;
+            height:88vh;
             border:none;
+            border-radius:16px;
+            background:white;
+            box-shadow:0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* ===== FOOTER ===== */
+
+        .footer{
+            position:absolute;
+            bottom:8px;
+            right:15px;
+            font-size:11px;
+            color:#777;
+        }
+
+        @media(max-width:1100px){
+
+            .topbar{
+                flex-direction:column;
+                gap:18px;
+                align-items:flex-start;
+            }
+
+            .right-section{
+                width:100%;
+                justify-content:space-between;
+            }
+
+            iframe{
+                height:82vh;
+            }
+
         }
 
     </style>
@@ -65,28 +159,72 @@
 </head>
 <body>
 
+    <!-- HEADER -->
+
     <div class="topbar">
 
-        <div class="title">
+        <div class="left-section">
 
-            <img src="{{ url_for('static', filename='images/logo.png') }}" 
-                 alt="COOPORIGEN">
+            <img 
+                src="{{ url_for('static', filename='images/logo.png') }}" 
+                alt="COOPORIGEN"
+                class="logo">
 
-            <h2>Portal BI - COOPORIGEN</h2>
+            <div class="title-box">
+
+                <h1>Portal BI - COOPORIGEN</h1>
+
+                <span>
+                    Inteligencia de Negocios • Plataforma Corporativa
+                </span>
+
+            </div>
 
         </div>
 
-        <a class="logout-btn" href="/logout">
-            Cerrar sesión
-        </a>
+        <div class="right-section">
+
+            <div class="support-box">
+
+                <div class="support-title">
+                    SOPORTE TÉCNICO
+                </div>
+
+                <div class="support-info">
+
+                    📧 coordinadorcumplimiento@cooporigen.com<br>
+
+                    📱 314 282 9508
+
+                </div>
+
+            </div>
+
+            <a class="logout-btn" href="/logout">
+                Cerrar sesión
+            </a>
+
+        </div>
 
     </div>
 
-    <iframe 
-        title="Power BI"
-        src="https://app.powerbi.com/view?r=eyJrIjoiOWUwZTBkMmUtMzRhYi00N2JlLTgzMmEtMzJkMjI1NmUzNTliIiwidCI6IjAwMTY5N2E4LWJmMzktNDVlMS1hMzAzLTNjMTBjNmE2YTQzOSIsImMiOjR9"
-        allowfullscreen>
-    </iframe>
+    <!-- DASHBOARD -->
+
+    <div class="dashboard-container">
+
+        <iframe 
+            title="Power BI"
+            src="https://app.powerbi.com/view?r=eyJrIjoiOWUwZTBkMmUtMzRhYi00N2JlLTgzMmEtMzJkMjI1NmUzNTliIiwidCI6IjAwMTY5N2E4LWJmMzktNDVlMS1hMzAzLTNjMTBjNmE2YTQzOSIsImMiOjR9"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+        © COOPORIGEN • Portal Corporativo BI 2026
+    </div>
 
 </body>
 </html>
