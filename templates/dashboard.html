@@ -14,78 +14,81 @@
         }
 
         body{
-            font-family: Arial, sans-serif;
-            background:#f4f4f4;
+            font-family:Arial, sans-serif;
+            background:#eef2f3;
             overflow:hidden;
         }
 
-        /* ===== TOPBAR ===== */
+        /* ===== HEADER ===== */
 
         .topbar{
-            background: linear-gradient(90deg, #3D9588, #245B63);
+            height:82px;
+            background:linear-gradient(90deg, #3D9588, #245B63);
             color:white;
-            padding:16px 28px;
+
             display:flex;
             justify-content:space-between;
             align-items:center;
-            box-shadow:0 4px 15px rgba(0,0,0,0.20);
+
+            padding:0 28px;
+
             border-bottom:3px solid #D4AF37;
+
+            box-shadow:0 4px 15px rgba(0,0,0,0.15);
         }
+
+        /* ===== LEFT ===== */
 
         .left-section{
             display:flex;
             align-items:center;
-            gap:18px;
+            gap:16px;
         }
 
         .logo{
-            width:58px;
-            height:58px;
-            border-radius:12px;
+            width:52px;
+            height:52px;
+            border-radius:10px;
             object-fit:contain;
             background:white;
             padding:4px;
-            box-shadow:0 4px 10px rgba(0,0,0,0.20);
-        }
-
-        .title-box{
-            display:flex;
-            flex-direction:column;
         }
 
         .title-box h1{
-            font-size:32px;
+            font-size:20px;
+            margin-bottom:3px;
             font-weight:bold;
-            letter-spacing:1px;
         }
 
         .title-box span{
-            font-size:13px;
-            opacity:0.9;
-            margin-top:3px;
+            font-size:12px;
+            opacity:0.90;
+            letter-spacing:0.5px;
         }
 
-        /* ===== RIGHT SECTION ===== */
+        /* ===== RIGHT ===== */
 
         .right-section{
             display:flex;
             align-items:center;
-            gap:18px;
+            gap:15px;
         }
 
         .support-box{
-            background:rgba(255,255,255,0.12);
-            padding:12px 18px;
-            border-radius:12px;
-            backdrop-filter:blur(5px);
-            border:1px solid rgba(255,255,255,0.15);
+            background:rgba(255,255,255,0.10);
+            padding:10px 16px;
+            border-radius:10px;
+            border:1px solid rgba(255,255,255,0.10);
+            text-align:left;
+            min-width:290px;
         }
 
         .support-title{
-            font-size:13px;
-            font-weight:bold;
             color:#FFD86B;
-            margin-bottom:5px;
+            font-size:11px;
+            font-weight:bold;
+            letter-spacing:1px;
+            margin-bottom:4px;
         }
 
         .support-info{
@@ -96,50 +99,41 @@
         .logout-btn{
             background:#D4AF37;
             color:white;
-            padding:13px 22px;
-            border-radius:12px;
+            padding:12px 20px;
+            border-radius:10px;
             text-decoration:none;
             font-weight:bold;
             transition:0.3s;
-            box-shadow:0 4px 10px rgba(0,0,0,0.15);
         }
 
         .logout-btn:hover{
             background:#b9962f;
-            transform:translateY(-2px);
         }
 
-        /* ===== CONTENT ===== */
+        /* ===== POWER BI ===== */
 
-        .dashboard-container{
-            padding:10px;
+        .iframe-container{
+            width:100%;
+            height:calc(100vh - 82px);
             background:#dfe5e8;
         }
 
         iframe{
             width:100%;
-            height:88vh;
+            height:100%;
             border:none;
-            border-radius:16px;
-            background:white;
-            box-shadow:0 6px 20px rgba(0,0,0,0.15);
+            display:block;
         }
 
-        /* ===== FOOTER ===== */
-
-        .footer{
-            position:absolute;
-            bottom:8px;
-            right:15px;
-            font-size:11px;
-            color:#777;
-        }
+        /* ===== RESPONSIVE ===== */
 
         @media(max-width:1100px){
 
             .topbar{
+                height:auto;
+                padding:18px;
                 flex-direction:column;
-                gap:18px;
+                gap:15px;
                 align-items:flex-start;
             }
 
@@ -148,8 +142,8 @@
                 justify-content:space-between;
             }
 
-            iframe{
-                height:82vh;
+            .iframe-container{
+                height:calc(100vh - 150px);
             }
 
         }
@@ -192,9 +186,9 @@
 
                 <div class="support-info">
 
-                    📧 coordinadorcumplimiento@cooporigen.com<br>
+                    coordinadorcumplimiento@cooporigen.com<br>
 
-                    📱 314 282 9508
+                    314 282 9508
 
                 </div>
 
@@ -208,9 +202,9 @@
 
     </div>
 
-    <!-- DASHBOARD -->
+    <!-- POWER BI -->
 
-    <div class="dashboard-container">
+    <div class="iframe-container">
 
         <iframe 
             title="Power BI"
@@ -218,12 +212,6 @@
             allowfullscreen>
         </iframe>
 
-    </div>
-
-    <!-- FOOTER -->
-
-    <div class="footer">
-        © COOPORIGEN • Portal Corporativo BI 2026
     </div>
 
 </body>
