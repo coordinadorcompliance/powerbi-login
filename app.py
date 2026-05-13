@@ -18,18 +18,27 @@ users = {
 
 @app.route("/", methods=["GET", "POST"])
 def login():
+
+    error = False
+
     if request.method == "POST":
+
         user = request.form["username"]
         password = request.form["password"]
 
         if user in users and users[user] == password:
+
             session["logged_in"] = True
             return redirect("/dashboard")
 
-    return render_template("login.html")
+        else:
+            error = True
+
+    return render_template("login.html", error=error)
 
 @app.route("/dashboard")
 def dashboard():
+
     if not session.get("logged_in"):
         return redirect("/")
 
@@ -37,6 +46,7 @@ def dashboard():
 
 @app.route("/logout")
 def logout():
+
     session.clear()
     return redirect("/")
 
