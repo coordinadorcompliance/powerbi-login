@@ -20,11 +20,11 @@
         }
 
         /* =========================
-           BARRA SUPERIOR
+           HEADER SUPERIOR
         ========================== */
 
         .topbar{
-            height:115px;
+            height:110px;
             background: linear-gradient(90deg, #3D9588, #347d73);
             color:white;
             display:flex;
@@ -36,7 +36,7 @@
         }
 
         /* =========================
-           LOGO Y TITULO
+           SECCION IZQUIERDA
         ========================== */
 
         .left-section{
@@ -46,8 +46,8 @@
         }
 
         .left-section img{
-            width:70px;
-            height:70px;
+            width:72px;
+            height:72px;
             object-fit:contain;
             background:white;
             padding:4px;
@@ -65,80 +65,55 @@
             opacity:0.95;
         }
 
-        .system-status{
-            font-size:12px;
+        /* =========================
+           ESTADO ACTIVO
+        ========================== */
+
+        .status{
+            margin-top:7px;
+            display:flex;
+            align-items:center;
+            gap:8px;
+            font-size:13px;
+            color:#dff7f2;
+        }
+
+        .status-dot{
+            width:10px;
+            height:10px;
+            border-radius:50%;
+            background:#3CFF84;
+            box-shadow:0 0 10px #3CFF84;
+        }
+
+        .datetime{
             margin-top:4px;
-            color:#d9f3ef;
-            letter-spacing:0.5px;
+            font-size:12px;
+            color:#d7efea;
+            opacity:0.9;
+            letter-spacing:0.3px;
         }
 
         /* =========================
-           PANEL DERECHO
+           SECCION DERECHA
         ========================== */
 
         .right-section{
             display:flex;
-            align-items:center;
-            gap:18px;
+            flex-direction:column;
+            align-items:flex-end;
+            gap:10px;
         }
-
-        /* =========================
-           SOPORTE
-        ========================== */
-
-        .support-box{
-            background:rgba(255,255,255,0.08);
-            border:1px solid rgba(255,255,255,0.12);
-            border-radius:14px;
-            padding:12px 18px;
-            backdrop-filter: blur(4px);
-            min-width:300px;
-        }
-
-        .support-title{
-            display:flex;
-            align-items:center;
-            gap:8px;
-            color:#D4AF37;
-            font-size:13px;
-            font-weight:bold;
-            letter-spacing:1px;
-            margin-bottom:6px;
-        }
-
-        .support-icon{
-            width:22px;
-            height:22px;
-            border-radius:50%;
-            background:#D4AF37;
-            color:#1e1e1e;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:13px;
-            font-weight:bold;
-        }
-
-        .support-info{
-            font-size:14px;
-            line-height:22px;
-            color:white;
-        }
-
-        /* =========================
-           BOTON
-        ========================== */
 
         .logout-btn{
             background:#D4AF37;
             color:white;
-            padding:16px 28px;
+            padding:15px 28px;
             border-radius:12px;
             text-decoration:none;
             font-weight:bold;
             font-size:16px;
             transition:0.3s;
-            white-space:nowrap;
         }
 
         .logout-btn:hover{
@@ -146,13 +121,24 @@
             transform:translateY(-2px);
         }
 
+        .support-text{
+            font-size:13px;
+            color:white;
+            opacity:0.95;
+        }
+
+        .support-text span{
+            color:#D4AF37;
+            font-weight:bold;
+        }
+
         /* =========================
-           DASHBOARD
+           CONTENEDOR DASHBOARD
         ========================== */
 
         .dashboard-container{
             width:100%;
-            height:calc(100vh - 115px);
+            height:calc(100vh - 110px);
             background:white;
         }
 
@@ -176,20 +162,27 @@
         <!-- IZQUIERDA -->
         <div class="left-section">
 
-            <img src="{{ url_for('static', filename='images/logo.png') }}" 
-                 alt="COOPORIGEN">
+            <img 
+                src="{{ url_for('static', filename='images/logo.png') }}" 
+                alt="COOPORIGEN">
 
             <div class="title-area">
 
                 <h1>Portal BI - COOPORIGEN</h1>
 
                 <div class="subtitle">
-                    Inteligencia de Negocios • Plataforma Corporativa
+                    Plataforma Analítica Corporativa
                 </div>
 
-                <div class="system-status">
-                    Sistema Operativo • En línea
+                <div class="status">
+
+                    <div class="status-dot"></div>
+
+                    <div>Plataforma activa</div>
+
                 </div>
+
+                <div class="datetime" id="datetime"></div>
 
             </div>
 
@@ -198,38 +191,20 @@
         <!-- DERECHA -->
         <div class="right-section">
 
-            <!-- SOPORTE -->
-            <div class="support-box">
-
-                <div class="support-title">
-
-                    <div class="support-icon">?</div>
-
-                    SOPORTE TÉCNICO
-
-                </div>
-
-                <div class="support-info">
-                    coordinadorcumplimiento@cooporigen.com
-                </div>
-
-                <div class="support-info">
-                    WhatsApp: 314 282 9508
-                </div>
-
-            </div>
-
-            <!-- BOTON -->
             <a class="logout-btn" href="/logout">
                 Cerrar sesión
             </a>
+
+            <div class="support-text">
+                <span>WhatsApp Soporte:</span> 314 282 9508
+            </div>
 
         </div>
 
     </div>
 
     <!-- =========================
-         DASHBOARD
+         DASHBOARD POWER BI
     ========================== -->
 
     <div class="dashboard-container">
@@ -241,6 +216,33 @@
         </iframe>
 
     </div>
+
+    <!-- =========================
+         FECHA AUTOMATICA
+    ========================== -->
+
+    <script>
+
+        function actualizarFechaHora(){
+
+            const fecha = new Date();
+
+            const opciones = {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            };
+
+            const fechaFormateada = fecha.toLocaleDateString('es-CO', opciones);
+
+            document.getElementById("datetime").innerHTML =
+                "Medellín, Colombia • " + fechaFormateada;
+
+        }
+
+        actualizarFechaHora();
+
+    </script>
 
 </body>
 </html>
