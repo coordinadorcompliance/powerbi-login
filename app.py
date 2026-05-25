@@ -5,15 +5,15 @@ app.secret_key = "clave_super_secreta"
 
 # Lista de usuarios
 users = {
-    "Douglas.alvarez": "Eslop.2026*",
-    "Andrea.roldan": "Eslop.2026*",
-    "Sergio.munera": "Eslop.2026*",
+
     "Juan.londono": "Cooporigen.2026*",
     "Sara.gonzales": "Cooporigen.2026*",
     "Juan.garcia": "Cooporigen.2026*",
     "Vanessa.espinal": "Eslop.2026*",
     "Yeison.saldarriaga": "Cooporigen.2026*",
-    "Cindy.aristizabal": "Eslop.2026*"
+
+    # Nuevo usuario
+    "Juliana.salgado": "Cooporigen.2026*"
 }
 
 @app.route("/", methods=["GET", "POST"])
