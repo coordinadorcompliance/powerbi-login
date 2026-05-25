@@ -3,16 +3,13 @@ from flask import Flask, render_template, request, redirect, session
 app = Flask(__name__)
 app.secret_key = "clave_super_secreta"
 
-# Lista de usuarios
+# Usuarios autorizados
 users = {
-
     "Juan.londono": "Cooporigen.2026*",
     "Sara.gonzales": "Cooporigen.2026*",
     "Juan.garcia": "Cooporigen.2026*",
     "Vanessa.espinal": "Eslop.2026*",
     "Yeison.saldarriaga": "Cooporigen.2026*",
-
-    # Nuevo usuario
     "Juliana.salgado": "Cooporigen.2026*"
 }
 
@@ -21,14 +18,20 @@ def login():
 
     error = False
 
+    # Cerrar sesión anterior automáticamente
+    session.clear()
+
     if request.method == "POST":
 
-        user = request.form["username"]
-        password = request.form["password"]
+        user = request.form["username"].strip()
+        password = request.form["password"].strip()
 
+        # Validar usuario y contraseña
         if user in users and users[user] == password:
 
             session["logged_in"] = True
+            session["user"] = user
+
             return redirect("/dashboard")
 
         else:
@@ -39,6 +42,7 @@ def login():
 @app.route("/dashboard")
 def dashboard():
 
+    # Si no ha iniciado sesión
     if not session.get("logged_in"):
         return redirect("/")
 
@@ -48,6 +52,7 @@ def dashboard():
 def logout():
 
     session.clear()
+
     return redirect("/")
 
 if __name__ == "__main__":
