@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 
 app = Flask(__name__)
-app.secret_key = "clave_super_secreta"
+app.secret_key = "cooporigen_2026_nueva_clave"
 
 # Usuarios autorizados
 users = {
