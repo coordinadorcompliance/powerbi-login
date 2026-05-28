@@ -10,7 +10,7 @@ users = {
     "Juan.garcia": "Cooporigen.2026*",
     "Vanessa.espinal": "Eslop.2026*",
     "Yeison.saldarriaga": "Cooporigen.2026*",
-    "Juliana.salgado": "Cooporigen.2026*"
+    "Juliana.salgado": "Cooporigen.2026*",
     "Oscar.renteria": "Cooporigen.2026*"
 }
 
